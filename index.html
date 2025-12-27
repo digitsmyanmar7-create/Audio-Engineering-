@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundCraft Studios | Professional Audio Engineering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0fccce;
+            --light: #e6e6e6;
+            --dark: #0d0d1a;
+        }
+        
+        body {
+            background-color: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--secondary);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .logo span {
+            color: var(--light);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(15, 204, 206, 0.4);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card i {
+            font-size: 40px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        /* Audio Upload Section */
+        .upload-section {
+            background-color: var(--secondary);
+        }
+        
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--primary);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .upload-area {
+            border: 3px dashed var(--accent);
+            border-radius: 10px;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .upload-area:hover {
+            background-color: rgba(15, 204, 206, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 60px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .upload-area h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .upload-area p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        #fileInput {
+            display: none;
+        }
+        
+        .file-info {
+            background-color: var(--dark);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .file-info.show {
+            display: block;
+        }
+        
+        .upload-progress {
+            width: 100%;
+            height: 10px;
+            background-color: var(--dark);
+            border-radius: 5px;
+            margin-top: 15px;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .upload-progress.show {
+            display: block;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        /* Equipment Section */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .equipment-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .equipment-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .equipment-img {
+            height: 200px;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--accent);
+        }
+        
+        .equipment-content {
+            padding: 20px;
+        }
+        
+        .equipment-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .project-audio {
+            padding: 20px;
+            background-color: var(--dark);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-detail i {
+            font-size: 20px;
+            color: var(--accent);
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .social-icons {
+            display: flex;
+            margin-top: 30px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+        
+        .github-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sound<span>Craft</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#upload">Audio Upload</a></li>
+                    <li><a href="#equipment">Equipment</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Professional Audio Engineering & Mixing</h1>
+            <p>Bringing your sound to life with state-of-the-art equipment and 10+ years of industry experience. Specializing in mixing, mastering, sound design, and post-production.</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+                <p>Comprehensive audio solutions for musicians, podcasts, film, and game developers</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Mixing & Mastering</h3>
+                    <p>Professional mixing and mastering services to give your tracks radio-ready quality and competitive loudness.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-microphone"></i>
+                    <h3>Recording</h3>
+                    <p>High-quality recording sessions in our acoustically treated studio with premium microphones and preamps.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wave-square"></i>
+                    <h3>Sound Design</h3>
+                    <p>Creative sound design for film, games, and multimedia projects using analog and digital synthesis.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-film"></i>
+                    <h3>Post-Production</h3>
+                    <p>Complete audio post-production including dialogue editing, Foley, ADR, and surround sound mixing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio Upload Section -->
+    <section class="upload-section" id="upload">
+        <div class="container">
+            <div class="section-title">
+                <h2>Audio File Upload</h2>
+                <p>Upload your audio files for mixing, mastering, or review. Supports WAV, MP3, AIFF, and FLAC formats.</p>
+            </div>
+            <div class="upload-container">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Drag & Drop Your Audio Files</h3>
+                    <p>or click to browse (Max file size: 100MB)</p>
+                    <input type="file" id="fileInput" accept=".wav,.mp3,.aiff,.flac">
+                    <button class="btn" id="browseBtn">Browse Files</button>
+                </div>
+                <div class="file-info" id="fileInfo">
+                    <p><strong>Selected File:</strong> <span id="fileName">No file selected</span></p>
+                    <p><strong>File Size:</strong> <span id="fileSize">-</span></p>
+                    <p><strong>File Type:</strong> <span id="fileType">-</span></p>
+                </div>
+                <div class="upload-progress" id="uploadProgress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <button class="btn" id="uploadBtn" style="width: 100%;">Upload File</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment">
+        <div class="container">
+            <div class="section-title">
+                <h2>Studio Equipment</h2>
+                <p>Professional-grade gear for pristine audio quality</p>
+            </div>
+            <div class="equipment-grid">
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Monitoring</h3>
+                        <p>Genelec 8351B, Yamaha HS8, AKG K712 Pro, Sennheiser HD650</p>
+                    </div>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Microphones</h3>
+                        <p>Neumann U87, AKG C414, Shure SM7B, Sennheiser MKH 416</p>
+                    </div>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Processing</h3>
+                        <p>Universal Audio Apollo x8, Warm Audio WA73, DBX 160, Lexicon PCM96</p>
+                    </div>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Software</h3>
+                        <p>Pro Tools, Logic Pro X, Ableton Live, iZotope RX, FabFilter Suite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Projects</h2>
+                <p>Listen to samples of my recent work across different genres and formats</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-audio">
+                        <h4>Rock Band Mix</h4>
+                        <audio controls>
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="project-info">
+                        <h3>Indie Rock Album</h3>
+                        <p>Full mixing and mastering for a 10-track indie rock album. Featured on Spotify editorial playlists.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-audio">
+                        <h4>Podcast Mastering</h4>
+                        <audio controls>
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="project-info">
+                        <h3>True Crime Podcast</h3>
+                        <p>Audio post-production, noise reduction, and loudness normalization for a popular true crime podcast.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-audio">
+                        <h4>Electronic Track</h4>
+                        <audio controls>
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="project-info">
+                        <h3>EDM Production</h3>
+                        <p>Sound design, mixing, and mastering for an electronic dance music release on Beatport.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your next audio project? Contact me for rates and availability</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-detail">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Studio Street, Music City, MC 10001</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <p>contact@soundcraftstudios.com</p>
+                    </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-clock"></i>
+                        <p>Mon-Fri: 10AM - 7PM | Sat: 12PM - 5PM</p>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-soundcloud"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div style="margin-bottom: 20px;">
+                            <input type="text" placeholder="Your Name" required style="width: 100%; padding: 15px; border-radius: 5px; border: none; background-color: var(--secondary); color: var(--light);">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <input type="email" placeholder="Your Email" required style="width: 100%; padding: 15px; border-radius: 5px; border: none; background-color: var(--secondary); color: var(--light);">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <select style="width: 100%; padding: 15px; border-radius: 5px; border: none; background-color: var(--secondary); color: var(--light);">
+                                <option value="" disabled selected>Select Service</option>
+                                <option value="mixing">Mixing & Mastering</option>
+                                <option value="recording">Recording</option>
+                                <option value="sound-design">Sound Design</option>
+                                <option value="post">Post-Production</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <textarea placeholder="Your Message" rows="5" style="width: 100%; padding: 15px; border-radius: 5px; border: none; background-color: var(--secondary); color: var(--light);"></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 SoundCraft Studios. All rights reserved.</p>
+            <p>Website ready for GitHub: <a href="https://github.com" class="github-link">Upload to GitHub</a></p>
+            <p>Designed for Audio Engineers</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // File Upload Functionality
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const fileName = document.getElementById('fileName');
+        const fileSize = document.getElementById('fileSize');
+        const fileType = document.getElementById('fileType');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadProgress = document.getElementById('uploadProgress');
+        const progressBar = document.getElementById('progressBar');
+
+        // Browse files when clicking the button or upload area
+        browseBtn.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        // Handle file selection
+        fileInput.addEventListener('change', function() {
+            if (this.files.length > 0) {
+                const file = this.files[0];
+                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                
+                fileName.textContent = file.name;
+                fileSize.textContent = `${fileSizeMB} MB`;
+                fileType.textContent = file.type || file.name.split('.').pop().toUpperCase();
+                
+                fileInfo.classList.add('show');
+            } else {
+                fileInfo.classList.remove('show');
+            }
+        });
+
+        // Handle drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#0fccce';
+            uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#0fccce';
+            uploadArea.style.backgroundColor = 'transparent';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#0fccce';
+            uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.05)';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                const event = new Event('change', { bubbles: true });
+                fileInput.dispatchEvent(event);
+            }
+        });
+
+        // Simulate file upload
+        uploadBtn.addEventListener('click', function() {
+            if (!fileInput.files.length) {
+                alert('Please select a file first!');
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+            
+            // Check file size (simulated)
+            if (parseFloat(fileSizeMB) > 100) {
+                alert('File size exceeds 100MB limit. Please select a smaller file.');
+                return;
+            }
+            
+            // Show progress bar
+            uploadProgress.classList.add('show');
+            
+            // Simulate upload progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = `${progress}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    
+                    // Show success message after delay
+                    setTimeout(() => {
+                        alert(`File "${file.name}" uploaded successfully! (This is a demo - no actual upload occurred)`);
+                        uploadProgress.classList.remove('show');
+                        progressBar.style.width = '0%';
+                        fileInput.value = '';
+                        fileInfo.classList.remove('show');
+                    }, 500);
+                }
+            }, 200);
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! This is a demo form. In a real website, this would send your inquiry.');
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
