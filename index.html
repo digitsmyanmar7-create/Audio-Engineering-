@@ -132,6 +132,17 @@
             box-shadow: 0 5px 15px rgba(15, 204, 206, 0.4);
         }
         
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
         /* Section Styling */
         section {
             padding: 80px 0;
@@ -334,6 +345,150 @@
             margin-top: 10px;
         }
         
+        /* Support Page Styles */
+        .support-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .faq-section {
+            margin-top: 40px;
+        }
+        
+        .faq-item {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+        
+        .faq-answer.open {
+            padding: 0 20px 20px 20px;
+            max-height: 300px;
+        }
+        
+        .support-card {
+            background-color: var(--secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .support-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .support-card i {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        /* News/Blog Page Styles */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .news-card {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .news-image {
+            height: 200px;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--accent);
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .news-tag {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .news-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-content p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .page-link {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 0 5px;
+            background-color: var(--secondary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .page-link:hover, .page-link.active {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -402,6 +557,15 @@
             font-weight: 600;
         }
         
+        /* Page-specific classes for hiding/showing content */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
         /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-links {
@@ -449,12 +613,14 @@
             <nav>
                 <div class="logo">Sound<span>Craft</span></div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#upload">Audio Upload</a></li>
-                    <li><a href="#equipment">Equipment</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#upload" class="nav-link" data-page="upload">Audio Upload</a></li>
+                    <li><a href="#equipment" class="nav-link" data-page="equipment">Equipment</a></li>
+                    <li><a href="#projects" class="nav-link" data-page="projects">Projects</a></li>
+                    <li><a href="#news" class="nav-link" data-page="news">News & Blog</a></li>
+                    <li><a href="#support" class="nav-link" data-page="support">Support</a></li>
+                    <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
                 <div class="menu-btn">
                     <i class="fas fa-bars"></i>
@@ -463,17 +629,17 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <!-- Home Page -->
+    <section class="hero page-content active" id="home-page">
         <div class="container hero-content">
             <h1>Professional Audio Engineering & Mixing</h1>
             <p>Bringing your sound to life with state-of-the-art equipment and 10+ years of industry experience. Specializing in mixing, mastering, sound design, and post-production.</p>
-            <a href="#contact" class="btn">Get in Touch</a>
+            <a href="#contact" class="btn nav-link" data-page="contact">Get in Touch</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services">
+    <!-- Services Page -->
+    <section class="page-content" id="services-page">
         <div class="container">
             <div class="section-title">
                 <h2>My Services</h2>
@@ -500,12 +666,22 @@
                     <h3>Post-Production</h3>
                     <p>Complete audio post-production including dialogue editing, Foley, ADR, and surround sound mixing.</p>
                 </div>
+                <div class="service-card">
+                    <i class="fas fa-headphones"></i>
+                    <h3>Audio Consultation</h3>
+                    <p>One-on-one sessions to improve your home studio setup, workflow, and mixing techniques.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Music Production</h3>
+                    <p>Full-service music production from composition to final master for artists and content creators.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Audio Upload Section -->
-    <section class="upload-section" id="upload">
+    <!-- Audio Upload Page -->
+    <section class="upload-section page-content" id="upload-page">
         <div class="container">
             <div class="section-title">
                 <h2>Audio File Upload</h2>
@@ -528,12 +704,23 @@
                     <div class="progress-bar" id="progressBar"></div>
                 </div>
                 <button class="btn" id="uploadBtn" style="width: 100%;">Upload File</button>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                    <h3 style="margin-bottom: 15px; color: var(--accent);">Upload Guidelines</h3>
+                    <ul style="color: #aaa; padding-left: 20px;">
+                        <li>Ensure your files are properly labeled with track names</li>
+                        <li>Include a reference track if you have specific sound goals</li>
+                        <li>For mixing: send stems with consistent gain staging</li>
+                        <li>For mastering: send the final mix with -6dB headroom</li>
+                        <li>Allow 3-5 business days for standard service</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Equipment Section -->
-    <section id="equipment">
+    <!-- Equipment Page -->
+    <section class="page-content" id="equipment-page">
         <div class="container">
             <div class="section-title">
                 <h2>Studio Equipment</h2>
@@ -576,12 +763,30 @@
                         <p>Pro Tools, Logic Pro X, Ableton Live, iZotope RX, FabFilter Suite</p>
                     </div>
                 </div>
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Instruments</h3>
+                        <p>Fender Rhodes, Moog Subsequent 37, Gibson Les Paul, Fender Precision Bass</p>
+                    </div>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-img">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <div class="equipment-content">
+                        <h3>Acoustic Treatment</h3>
+                        <p>Custom bass traps, diffusers, and absorption panels for optimal listening environment</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
+    <!-- Projects Page -->
+    <section class="page-content" id="projects-page">
         <div class="container">
             <div class="section-title">
                 <h2>Recent Projects</h2>
@@ -631,8 +836,218 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
+    <!-- News & Blog Page -->
+    <section class="page-content" id="news-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>News & Blog</h2>
+                <p>Latest updates, tutorials, and insights from the world of audio engineering</p>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> June 15, 2023</span>
+                            <span class="news-tag">Tutorial</span>
+                        </div>
+                        <h3>5 Essential Mixing Techniques for Home Studios</h3>
+                        <p>Learn how to achieve professional-sounding mixes even in less-than-ideal acoustic environments with these practical tips.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> May 28, 2023</span>
+                            <span class="news-tag">Gear Review</span>
+                        </div>
+                        <h3>Review: Neumann U87 vs. Warm Audio WA-87</h3>
+                        <p>We compare the legendary Neumann U87 with the more affordable Warm Audio clone to see if budget alternatives can compete.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> April 12, 2023</span>
+                            <span class="news-tag">Industry News</span>
+                        </div>
+                        <h3>Dolby Atmos: The Future of Music Mixing?</h3>
+                        <p>Exploring how spatial audio is changing the music industry and what it means for independent artists and engineers.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-wave-square"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> March 30, 2023</span>
+                            <span class="news-tag">Tutorial</span>
+                        </div>
+                        <h3>Mastering for Streaming: LUFS Explained</h3>
+                        <p>Understanding loudness standards for Spotify, Apple Music, and YouTube to ensure your tracks sound great everywhere.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> February 18, 2023</span>
+                            <span class="news-tag">Case Study</span>
+                        </div>
+                        <h3>Behind the Scenes: Sound Design for Indie Film</h3>
+                        <p>A breakdown of our sound design process for an award-winning independent short film.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="far fa-calendar"></i> January 5, 2023</span>
+                            <span class="news-tag">Interview</span>
+                        </div>
+                        <h3>Studio Tour: Inside a Grammy-Winning Engineer's Setup</h3>
+                        <p>We visit the studio of award-winning engineer Sarah Johnson to learn about her workflow and favorite gear.</p>
+                        <a href="#" class="btn btn-outline">Read More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">Next</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Page -->
+    <section class="page-content" id="support-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Support Center</h2>
+                <p>Find answers to common questions and get help with your audio projects</p>
+            </div>
+            
+            <div class="support-container">
+                <div class="support-card">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>FAQs</h3>
+                    <p>Browse our frequently asked questions to find quick answers about our services, pricing, and process.</p>
+                    <a href="#faq-section" class="btn" style="margin-top: 15px;">View FAQs</a>
+                </div>
+                
+                <div class="support-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Tutorials</h3>
+                    <p>Step-by-step guides and video tutorials to help you prepare files, understand our process, and more.</p>
+                    <a href="#tutorials" class="btn" style="margin-top: 15px;">View Tutorials</a>
+                </div>
+                
+                <div class="support-card">
+                    <i class="fas fa-life-ring"></i>
+                    <h3>Technical Support</h3>
+                    <p>Having issues with file uploads or technical problems? Our support team is here to help.</p>
+                    <a href="#contact" class="btn nav-link" data-page="contact" style="margin-top: 15px;">Contact Support</a>
+                </div>
+            </div>
+            
+            <div class="faq-section" id="faq-section" style="margin-top: 80px;">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Quick answers to common questions about our audio engineering services</p>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What file formats do you accept for mixing/mastering?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept WAV, AIFF, MP3, and FLAC files. For mixing projects, we prefer 24-bit WAV files at the original sample rate of your project. For mastering, we need the final stereo mix as a 24-bit WAV file with -6dB of headroom.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does a typical mixing or mastering project take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Mixing: 3-5 business days per song. Mastering: 2-3 business days per song. Rush services are available for an additional fee. Complex projects or albums may require additional time, which we'll discuss before starting.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer revisions?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We include up to 2 rounds of revisions for mixing projects and 1 round for mastering. Additional revisions are available for a small fee. We want you to be completely satisfied with the final product.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What's your pricing structure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our pricing is project-based. Mixing starts at $150 per song, mastering at $75 per song. We offer package deals for albums and EPs. For custom projects (sound design, film audio, etc.), we provide quotes after discussing your specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I attend the mixing/mastering session remotely?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We offer remote session attendance via Zoom or Source-Connect. This allows you to listen in real-time and provide feedback as we work. We schedule remote sessions in advance to ensure we have dedicated time for your project.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 80px; background-color: var(--secondary); padding: 40px; border-radius: 10px;">
+                <div class="section-title" style="margin-bottom: 30px;">
+                    <h3>Still Need Help?</h3>
+                    <p>Can't find what you're looking for? Contact our support team directly.</p>
+                </div>
+                <div style="text-align: center;">
+                    <a href="#contact" class="btn nav-link" data-page="contact">Contact Support Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section class="page-content" id="contact-page">
         <div class="container">
             <div class="section-title">
                 <h2>Get In Touch</h2>
@@ -657,11 +1072,16 @@
                         <i class="fas fa-clock"></i>
                         <p>Mon-Fri: 10AM - 7PM | Sat: 12PM - 5PM</p>
                     </div>
+                    <div class="contact-detail">
+                        <i class="fas fa-headset"></i>
+                        <p>Support: support@soundcraftstudios.com</p>
+                    </div>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-soundcloud"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -679,6 +1099,8 @@
                                 <option value="recording">Recording</option>
                                 <option value="sound-design">Sound Design</option>
                                 <option value="post">Post-Production</option>
+                                <option value="support">Technical Support</option>
+                                <option value="other">Other Inquiry</option>
                             </select>
                         </div>
                         <div style="margin-bottom: 20px;">
@@ -695,144 +1117,204 @@
     <footer>
         <div class="container">
             <p>&copy; 2023 SoundCraft Studios. All rights reserved.</p>
-            <p>Website ready for GitHub: <a href="https://github.com" class="github-link">Upload to GitHub</a></p>
-            <p>Designed for Audio Engineers</p>
+            <p>Website ready for GitHub: <a href="https://github.com" class="github-link" target="_blank">Upload to GitHub</a></p>
+            <p>Designed for Audio Engineers | <a href="#support" class="github-link nav-link" data-page="support" style="font-weight: normal;">Support Center</a> | <a href="#news" class="github-link nav-link" data-page="news" style="font-weight: normal;">News & Blog</a></p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.menu-btn').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.querySelector('.nav-links').classList.remove('active');
-            });
-        });
-
-        // File Upload Functionality
-        const uploadArea = document.getElementById('uploadArea');
-        const fileInput = document.getElementById('fileInput');
-        const browseBtn = document.getElementById('browseBtn');
-        const fileInfo = document.getElementById('fileInfo');
-        const fileName = document.getElementById('fileName');
-        const fileSize = document.getElementById('fileSize');
-        const fileType = document.getElementById('fileType');
-        const uploadBtn = document.getElementById('uploadBtn');
-        const uploadProgress = document.getElementById('uploadProgress');
-        const progressBar = document.getElementById('progressBar');
-
-        // Browse files when clicking the button or upload area
-        browseBtn.addEventListener('click', () => fileInput.click());
-        uploadArea.addEventListener('click', () => fileInput.click());
-
-        // Handle file selection
-        fileInput.addEventListener('change', function() {
-            if (this.files.length > 0) {
-                const file = this.files[0];
-                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+        // Page Navigation System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all page elements
+            const pages = document.querySelectorAll('.page-content');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Function to show a specific page and hide others
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
                 
-                fileName.textContent = file.name;
-                fileSize.textContent = `${fileSizeMB} MB`;
-                fileType.textContent = file.type || file.name.split('.').pop().toUpperCase();
-                
-                fileInfo.classList.add('show');
-            } else {
-                fileInfo.classList.remove('show');
-            }
-        });
-
-        // Handle drag and drop
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = '#0fccce';
-            uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.1)';
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.style.borderColor = '#0fccce';
-            uploadArea.style.backgroundColor = 'transparent';
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.style.borderColor = '#0fccce';
-            uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.05)';
-            
-            if (e.dataTransfer.files.length) {
-                fileInput.files = e.dataTransfer.files;
-                const event = new Event('change', { bubbles: true });
-                fileInput.dispatchEvent(event);
-            }
-        });
-
-        // Simulate file upload
-        uploadBtn.addEventListener('click', function() {
-            if (!fileInput.files.length) {
-                alert('Please select a file first!');
-                return;
-            }
-            
-            const file = fileInput.files[0];
-            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
-            
-            // Check file size (simulated)
-            if (parseFloat(fileSizeMB) > 100) {
-                alert('File size exceeds 100MB limit. Please select a smaller file.');
-                return;
-            }
-            
-            // Show progress bar
-            uploadProgress.classList.add('show');
-            
-            // Simulate upload progress
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 20;
-                if (progress > 100) progress = 100;
-                
-                progressBar.style.width = `${progress}%`;
-                
-                if (progress >= 100) {
-                    clearInterval(interval);
-                    
-                    // Show success message after delay
-                    setTimeout(() => {
-                        alert(`File "${file.name}" uploaded successfully! (This is a demo - no actual upload occurred)`);
-                        uploadProgress.classList.remove('show');
-                        progressBar.style.width = '0%';
-                        fileInput.value = '';
-                        fileInfo.classList.remove('show');
-                    }, 500);
+                // Show the selected page
+                const activePage = document.getElementById(`${pageId}-page`);
+                if (activePage) {
+                    activePage.classList.add('active');
                 }
-            }, 200);
-        });
-
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! This is a demo form. In a real website, this would send your inquiry.');
-            this.reset();
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.style.color = '';
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.style.color = 'var(--accent)';
+                    }
+                });
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
+                // Store current page in localStorage
+                localStorage.setItem('currentPage', pageId);
+            }
+            
+            // Set up navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                    
+                    // Scroll to top of page
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: 0,
                         behavior: 'smooth'
                     });
+                });
+            });
+            
+            // Check for stored page or default to home
+            const storedPage = localStorage.getItem('currentPage');
+            if (storedPage) {
+                showPage(storedPage);
+            } else {
+                showPage('home');
+            }
+            
+            // Mobile Menu Toggle
+            document.querySelector('.menu-btn').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // File Upload Functionality
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const browseBtn = document.getElementById('browseBtn');
+            const fileInfo = document.getElementById('fileInfo');
+            const fileName = document.getElementById('fileName');
+            const fileSize = document.getElementById('fileSize');
+            const fileType = document.getElementById('fileType');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const uploadProgress = document.getElementById('uploadProgress');
+            const progressBar = document.getElementById('progressBar');
+
+            // Browse files when clicking the button or upload area
+            browseBtn.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('click', () => fileInput.click());
+
+            // Handle file selection
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    const file = this.files[0];
+                    const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                    
+                    fileName.textContent = file.name;
+                    fileSize.textContent = `${fileSizeMB} MB`;
+                    fileType.textContent = file.type || file.name.split('.').pop().toUpperCase();
+                    
+                    fileInfo.classList.add('show');
+                } else {
+                    fileInfo.classList.remove('show');
                 }
+            });
+
+            // Handle drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#0fccce';
+                uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.1)';
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = '#0fccce';
+                uploadArea.style.backgroundColor = 'transparent';
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#0fccce';
+                uploadArea.style.backgroundColor = 'rgba(15, 204, 206, 0.05)';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change', { bubbles: true });
+                    fileInput.dispatchEvent(event);
+                }
+            });
+
+            // Simulate file upload
+            uploadBtn.addEventListener('click', function() {
+                if (!fileInput.files.length) {
+                    alert('Please select a file first!');
+                    return;
+                }
+                
+                const file = fileInput.files[0];
+                const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                
+                // Check file size (simulated)
+                if (parseFloat(fileSizeMB) > 100) {
+                    alert('File size exceeds 100MB limit. Please select a smaller file.');
+                    return;
+                }
+                
+                // Show progress bar
+                uploadProgress.classList.add('show');
+                
+                // Simulate upload progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += Math.random() * 20;
+                    if (progress > 100) progress = 100;
+                    
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        
+                        // Show success message after delay
+                        setTimeout(() => {
+                            alert(`File "${file.name}" uploaded successfully! (This is a demo - no actual upload occurred)`);
+                            uploadProgress.classList.remove('show');
+                            progressBar.style.width = '0%';
+                            fileInput.value = '';
+                            fileInfo.classList.remove('show');
+                        }, 500);
+                    }
+                }, 200);
+            });
+
+            // FAQ Accordion Functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle the answer
+                    answer.classList.toggle('open');
+                    
+                    // Rotate the icon
+                    if (answer.classList.contains('open')) {
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                    
+                    // Close other FAQ items (optional)
+                    // faqQuestions.forEach(otherQuestion => {
+                    //     if (otherQuestion !== this) {
+                    //         otherQuestion.nextElementSibling.classList.remove('open');
+                    //         otherQuestion.querySelector('i').style.transform = 'rotate(0deg)';
+                    //     }
+                    // });
+                });
+            });
+
+            // Contact form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! This is a demo form. In a real website, this would send your inquiry.');
+                this.reset();
             });
         });
     </script>
